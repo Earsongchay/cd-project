@@ -8,44 +8,36 @@ import {environment} from "../../../environments/environment";
 })
 export class HttpService {
   constructor(private http:HttpClient) { }
-
-  buildParam(param: any): any {
-    if (!param) {
-      return {}
-    }
-    const keys = Object.keys(param).filter(
-      (key) => param[key] != null && param[key] != undefined && param[key] != ''
-    )
-    const result: any = {}
-    keys.forEach((key) => {
-      result[key] = param[key]
-    })
-
-    return result
+  get<T>(path?: string): Observable<T> {
+    return this.http.get<T>(`${environment.HOST_URL}${path}`)
   }
-  get<T>(url: string): Observable<T> {
-    return this.http.get<T>(`${environment.HOST_URL}${url}`)
+  getFullPath<T>(url?: string): Observable<T> {
+    return this.http.get<T>(`${url}`)
   }
-  getImage(url: string): Observable<ArrayBuffer> {
-    return this.http.get(`${environment.HOST_URL}${url}`, {
+  getImage(path: string): Observable<ArrayBuffer> {
+    return this.http.get(`${environment.HOST_URL}${path}`, {
       responseType: 'arraybuffer',
     })
   }
-  post<T, U>(url: string, body: U): Observable<T> {
-    return this.http.post<T>(`${environment.HOST_URL}${url}`, body)
+  post<T, U>(path: string, body: U): Observable<T> {
+    return this.http.post<T>(`${environment.HOST_URL}${path}`, body)
   }
-  put<T, U>(url: string, body: U): Observable<T> {
-    return this.http.put<T>(`${environment.HOST_URL}${url}`, body)
+
+  postFullPath<T, U>(path: string, body: U): Observable<T> {
+    return this.http.post<T>(`${path}`, body)
   }
-  patch<T, U>(url: string, body: U): Observable<T> {
-    return this.http.patch<T>(`${environment.HOST_URL}${url}`, body)
+  put<T, U>(path: string, body: U): Observable<T> {
+    return this.http.put<T>(`${environment.HOST_URL}${path}`, body)
   }
-  deleteWithBody<T, U>(url: string, body?: U): Observable<T> {
-    return this.http.delete<T>(`${environment.HOST_URL}${url}`, {
+  patch<T, U>(path: string, body: U): Observable<T> {
+    return this.http.patch<T>(`${environment.HOST_URL}${path}`, body)
+  }
+  deleteWithBody<T, U>(path: string, body?: U): Observable<T> {
+    return this.http.delete<T>(`${environment.HOST_URL}${path}`, {
       body,
     })
   }
-  delete<T>(url: string): Observable<T> {
-    return this.http.delete<T>(`${environment.HOST_URL}${url}`)
+  delete<T>(path: string): Observable<T> {
+    return this.http.delete<T>(`${environment.HOST_URL}${path}`)
   }
 }

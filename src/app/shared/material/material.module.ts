@@ -32,7 +32,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {OverlayModule} from "@angular/cdk/overlay";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {A11yModule} from "@angular/cdk/a11y";
 
 const materialComponents = [
@@ -71,6 +71,7 @@ const materialComponents = [
   MatAutocompleteModule,
   OverlayModule,
   ReactiveFormsModule,
+  FormsModule,
   A11yModule,
 ];
 
