@@ -1,1 +1,146 @@
-/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+$allweb-primary: (
+  50: #ebf5f9,
+    100: #d7ebf4,
+    200: #b0d7e8,
+    300: #88c3dd,
+    400: #61afd1,
+    500: #47a2ca,
+    600: #2e7c9e,
+    700: #225d77,
+    800: #173e4f,
+    900: #0b1f28,
+
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$allweb-second: (
+  50: #f9ebf9,
+    100: #f3d7f4,
+    200: #e7afe9,
+    300: #da88dd,
+    400: #ce60d2,
+    500: #c238c7,
+    600: #9b2d9f,
+    700: #742277,
+    800: #4e1650,
+    900: #270b28,
+    950: #130614,
+
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+
+$allweb-accent: (
+  50: #f9ebf2,
+    100: #f4d7e6,
+    200: #e9afcd,
+    300: #dd88b4,
+    400: #d2609b,
+    500: #c73882,
+    600: #9f2d68,
+    700: #77224e,
+    800: #501634,
+    900: #280b1a,
+
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+
+
+$cd-primary: mat.define-palette($allweb-primary,500);
+$cd-accent: mat.define-palette($allweb-second,200);
+$cd-warn: mat.define-palette($allweb-second);
+
+$cd-theme: mat.define-light-theme((
+  color: (
+    primary: $cd-primary,
+    accent: $cd-accent,
+    warn: $cd-warn,
+  )
+));
+
+@include mat.all-component-colors($cd-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F6FAFC;}
+
+
+h1 {
+  padding: 0 1rem;
+}
+
+h2 {padding: 1rem;}
+
+mat-toolbar{
+  position:fixed;
+  top:0;
+  z-index: 2;
+}
+
+mat-sidenav-container {
+  height:100%;
+}
+
+mat-sidenav {
+  padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+    padding-top: 4rem;
+  }
+}
+
+mat-sidenav-content{
+  padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+      padding-top: 4rem;
+  }
+}

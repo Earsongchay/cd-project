@@ -1,0 +1,50 @@
+<mat-sidenav-container autosize>
+    <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isOpen" >
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node
+          *matTreeNodeDef="let node"
+          [class.child-menu]="node.level > 0"
+        >
+          <ng-container>
+            <button
+              class="w-100 text-left"
+              [routerLink]="node.link"
+              mat-button
+              [routerLinkActive]="['active']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <mat-icon class="mat-icon-rtl-mirror menu-icon">{{
+                node.icon
+              }}</mat-icon>
+              <span class="menu-name block pl-1">{{ node.name }}</span>
+            </button>
+          </ng-container>
+        </mat-tree-node>
+
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild">
+          <button
+            class="w-100 text-left"
+            mat-button
+            matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name"
+          >
+            <mat-icon class="mat-icon-rtl-mirror menu-icon">{{
+              node.icon
+            }}</mat-icon>
+            <span class="menu-name block pl-1">{{ node.name }}</span>
+            <mat-icon class="let-right pt-1 pr-2 expand-icon">
+              {{
+                treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
+              }}
+            </mat-icon>
+          </button>
+        </mat-tree-node>
+      </mat-tree>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="h-full">
+        <router-outlet></router-outlet>
+        <app-footer class="absolute bottom-0"></app-footer>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
