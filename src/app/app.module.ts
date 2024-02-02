@@ -12,6 +12,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FooterComponent } from './component/footer/footer.component';
 import {PageModule} from "./page/page.module";
 import {SharedModule} from "./shared/shared.module";
+import { EffectsModule } from '@ngrx/effects';
+import {authReducer} from "./shared/state-manager/auth/auth.reducer";
+import {AuthEffects} from "./shared/state-manager/auth/auth.effect";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import {SharedModule} from "./shared/shared.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    StoreModule.forRoot({sidebar: openSideBarReducer}),
+    StoreModule.forRoot({sidebar: openSideBarReducer,Auth:authReducer}),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,
@@ -35,7 +39,8 @@ import {SharedModule} from "./shared/shared.module";
         persist: true,
       },
     }),
-    PageModule
+    PageModule,
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

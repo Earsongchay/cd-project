@@ -1,6 +1,12 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {AuthService} from "../../shared/auth/auth.service";
+import {Store} from "@ngrx/store";
+import {login} from "../../shared/state-manager/auth/auth.action";
+import {
+  isLoggedIn, selectError, selectUser,
+} from "../../shared/state-manager/auth/auth.selector";
+import {Observable} from "rxjs";
+import {User} from "../../shared/state-manager/auth/auth.state";
 
 @Component({
   selector: 'app-welcome',
@@ -9,26 +15,30 @@ import {AuthService} from "../../shared/auth/auth.service";
 })
 export class WelcomeComponent  {
   form:FormGroup
-  constructor(private authService:AuthService) {
+
+  isLoggedIn$: Observable<boolean>;
+  user$: Observable<User | ''>;
+  error$: Observable<any>;
+
+
+
+
+  constructor(private store:Store) {
     this.form = new FormGroup({
       username: new FormControl('chay'),
       password: new FormControl('123')
     });
+
+    this.isLoggedIn$ = this.store.select(isLoggedIn)
+    this.user$ = this.store.select(selectUser);
+    this.error$ = this.store.select(selectError);
+
+    this.store.select(selectUser).subscribe(data =>{
+      console.log(data)
+    })
   }
-
-
   login() {
-    if (this.form){
-      this.authService.login(this.form.value).subscribe({
-        next: data => {
-          console.log(data)
-        },
-        error: (err) => {
-          console.log(err)
-        }
-
-        }
-      )
-    }
+    this.store.dispatch(login({...this.form.value}));
   }
+
 }
