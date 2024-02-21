@@ -1,0 +1,16 @@
+services:
+  cd:
+    container_name: cdapp
+    build: .
+    image: cdapp:v1
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge
+
