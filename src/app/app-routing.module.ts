@@ -18,7 +18,6 @@ const routes: Routes = [
   {
     path:'login',
     component:WelcomeComponent,
-    canActivate:[authGuard]
   },
   {
     path:'employee',
