@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageRoutingModule } from './page-routing.module';
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {EmployeeComponent} from "./employee/employee.component";
 import { WelcomeComponent } from './welcome/welcome.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    EmployeeComponent,
     WelcomeComponent,
   ],
   imports: [

@@ -19,7 +19,6 @@ export class SidebarComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
-
   constructor(private observer: BreakpointObserver,private store: Store){
     this.dataSource.data = MENU_DATA;
   }
@@ -64,6 +63,11 @@ export class SidebarComponent implements OnInit{
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   hasChild = (_: number, node: SideMenuNode): boolean => node.expandable;
+
+  openSideBar() {
+    this.isOpen = !this.isOpen
+    this.store.dispatch(openSidebarAction({isOpen : this.isOpen}))
+  }
 }
 
 export interface SideMenuNode {

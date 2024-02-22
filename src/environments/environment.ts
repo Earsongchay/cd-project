@@ -1,6 +1,6 @@
 export const environment = {
   production:true,
-  HOST_URL: 'http://localhost:8183',
+  HOST_URL: '',
   KEYCLOAK: {
     URL: 'http://localhost:8080',
     realm: 'test',

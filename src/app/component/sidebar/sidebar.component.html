@@ -1,29 +1,35 @@
 <mat-sidenav-container autosize>
     <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isOpen" >
+      <div class="logo">
+        <div>
+          LOGO HERE
+        </div>
+      </div>
+
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node
+          class="my-4 mx-4"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true }"
           *matTreeNodeDef="let node"
           [class.child-menu]="node.level > 0"
         >
           <ng-container>
             <button
-              class="w-100 text-left"
+              class="nav-item"
               [routerLink]="node.link"
-              mat-button
-              [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{ exact: true }"
             >
               <mat-icon class="mat-icon-rtl-mirror menu-icon">{{
                 node.icon
               }}</mat-icon>
-              <span class="menu-name block pl-1">{{ node.name }}</span>
+              <span class="menu-name block pl-3">{{ node.name }}</span>
             </button>
           </ng-container>
         </mat-tree-node>
 
-        <mat-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <mat-tree-node [routerLinkActive]="['active']" *matTreeNodeDef="let node; when: hasChild">
           <button
-            class="w-100 text-left"
+            class="nav-item"
             mat-button
             matTreeNodeToggle
             [attr.aria-label]="'Toggle ' + node.name"
@@ -43,7 +49,22 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="h-full">
-        <router-outlet></router-outlet>
+        <div>
+          <div class="min-h-16 bg-0-primary flex items-center justify-between text-white">
+            <button mat-icon-button (click)="openSideBar()">
+               <mat-icon class="leading-[18px] ">menu</mat-icon>
+            </button>
+            <div class="mr-6">
+              sdfsdf
+            </div>
+          </div>
+          <div class="text-sm py-2 pl-4 border-b">
+            sdfsdf > sdf > sdf
+          </div>
+          <div class="p-10">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
         <app-footer class="absolute bottom-0"></app-footer>
       </div>
     </mat-sidenav-content>

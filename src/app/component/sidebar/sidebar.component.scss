@@ -1,0 +1,9 @@
+.nav-item{
+  @apply text-left pl-5 pr-10 w-52 py-2 flex flex-nowrap
+}
+.active{
+  @apply border-2 border-0-primary text-left text-0-primary rounded-[14px] drop-shadow
+}
+.logo{
+  @apply h-24 w-full flex justify-center items-center drop-shadow-lg
+}

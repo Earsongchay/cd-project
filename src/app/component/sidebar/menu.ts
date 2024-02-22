@@ -12,9 +12,9 @@ export interface MenuNode {
       link: '/dashboard',
     },
     {
-      name: 'Employees',
-      icon: 'Person',
-      link: '/employee',
+      name: 'Artist',
+      icon: 'person',
+      link: '/list-artist',
 
     },
     // {

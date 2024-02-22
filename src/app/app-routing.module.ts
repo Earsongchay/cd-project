@@ -7,7 +7,7 @@ import {WelcomeComponent} from "./page/welcome/welcome.component";
 const routes: Routes = [
   {
     path:'',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch:'full'
   },
   {
@@ -19,9 +19,9 @@ const routes: Routes = [
     component:WelcomeComponent,
   },
   {
-    path:'employee',
+    path:'list-artist',
     loadChildren: () =>
-      import('./page/page.module').then((m) => m.PageModule),
+      import('./page/artist/artist.module').then((m) => m.ArtistModule),
   }
 ];
 

@@ -4,7 +4,7 @@ import {Store} from "@ngrx/store";
 import {selectUser} from "../state-manager/auth/auth.selector";
 
 export const authGuard: CanActivateFn = (route, state) => {
-  return checkAuth();
+  return true;
 };
 
 const checkAuth = ()=>{
