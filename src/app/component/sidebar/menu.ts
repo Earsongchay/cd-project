@@ -13,67 +13,53 @@ export interface MenuNode {
     },
     {
       name: 'Artist',
-      icon: 'person',
-      link: '/list-artist',
+      icon: 'wc',
+      link: '/list-artist/list',
 
     },
-    // {
-    //   name: 'Interview',
-    //   icon: 'history_toggle_off',
-    //   link: '/interview',
-    //
-    // },
-    // {
-    //   name: 'Candidate',
-    //   icon: 'person_add',
-    //   link: '/candidate',
-    //
-    // },
-    // {
-    //   name: 'Demand',
-    //   icon: 'auto_graph',
-    //   link: '/demand',
-    //
-    // },
-    // {
-    //   name: 'Report',
-    //   icon: 'bar_chart',
-    //   link: '/candidate/report',
-    // },
-    // {
-    //   name: 'Advance Report',
-    //   icon: 'query_stats',
-    //   link: '/candidate/advance-report',
-    // },
-    // {
-    //   name: 'Activity',
-    //   icon: 'list_alt',
-    //   link: '/activities',
-    // },
-    // {
-    //   name: 'Reminder',
-    //   icon: 'notification_important',
-    //   link: '/reminders',
-    // },
-    // {
-    //   name: 'Setting',
-    //   icon: 'settings',
-    //   children: [
-    //     {
-    //       name: 'Company Profile',
-    //       icon: 'home_work',
-    //       link: '/setting/feature-company-profile',
-    //     },
-    //     {
-    //       name: 'File Manager',
-    //       icon: 'snippet_folder',
-    //       link: '/setting/file-manager',
-    //     },
-    //     {
-    //       name: 'Interview Template',
-    //       icon: 'social_distance',
-    //       link: '/setting/interviewtemplate',
-    //     },
+    {
+      name: 'Album',
+      icon: 'multitrack_audio',
+      link: '/list-artist/create',
+    },
+    {
+      name: 'Track',
+      icon: 'audiotrack',
+      link: '/track',
+
+    },
+    {
+      name: 'Vinyl',
+      icon: 'album',
+      link: '/vinyl',
+
+    },
+    {
+      name: 'Shopping',
+      icon: 'shopping_basket',
+      link: '/shopping',
+
+    },
+    {
+      name: 'Cart',
+      icon: 'shopping_cart',
+      link: '/demand',
+
+    },
+    {
+      name: 'Setting',
+      icon: 'settings',
+      children: [
+        {
+          name: 'Profile',
+          icon: 'manage_accounts',
+          link: '/dashboard',
+        },
+        {
+          name: 'Progressing',
+          icon: 'connect_without_contact',
+          link: '/setting/interviewtemplate',
+        },
     //     {
     //       name: 'Interview Status',
     //       icon: 'fact_check',
@@ -135,6 +121,6 @@ export interface MenuNode {
     //       icon: 'groups',
     //       link: 'istration/groups',
     //     },
-    //   ],
-    // },
+      ],
+    }
   ];

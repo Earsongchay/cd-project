@@ -5,7 +5,23 @@ import {ListArtistComponent} from "./list-artist/list-artist.component";
 const routes: Routes = [
   {
     path:'',
-    component:ListArtistComponent
+    redirectTo:'list',
+    pathMatch:'full',
+
+  },
+  {
+    path:'list',
+    component:ListArtistComponent,
+    data:{
+      breadcrumb:'list'
+    }
+  },
+  {
+    path:'create',
+    component:ListArtistComponent,
+    data:{
+      breadcrumb:'create'
+    }
   }
 ];
 

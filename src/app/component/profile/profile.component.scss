@@ -1,0 +1,8 @@
+.name{
+  font-family: "Dosis", "Helvetica Neue", sans-serif;
+  letter-spacing: 2px;
+  @apply font-extrabold text-xs
+}
+.btn{
+  @apply text-xs w-full flex flex-row justify-start items-center my-2 pl-2 hover:text-0-accent
+}

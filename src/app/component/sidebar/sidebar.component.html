@@ -1,8 +1,11 @@
 <mat-sidenav-container autosize>
     <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isOpen" >
       <div class="logo">
-        <div>
-          LOGO HERE
+        <div class="w-12 h-12 mr-2">
+          <img src="assets/m.png" class="w-full h-full" alt="">
+        </div>
+        <div class="text-2xl font-sans font-extralight text-0-primary">
+          MUSICA
         </div>
       </div>
 
@@ -29,38 +32,29 @@
 
         <mat-tree-node [routerLinkActive]="['active']" *matTreeNodeDef="let node; when: hasChild">
           <button
-            class="nav-item"
-            mat-button
+            class="nav-item nav-parent relative"
             matTreeNodeToggle
             [attr.aria-label]="'Toggle ' + node.name"
           >
-            <mat-icon class="mat-icon-rtl-mirror menu-icon">{{
-              node.icon
-            }}</mat-icon>
-            <span class="menu-name block pl-1">{{ node.name }}</span>
-            <mat-icon class="let-right pt-1 pr-2 expand-icon">
-              {{
-                treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
-              }}
+            <mat-icon class="menu-icon">{{node.icon}}</mat-icon>
+            <span class="menu-name block pl-4">{{ node.name }}</span>
+            <mat-icon class="ml-auto text-sm expand-icon absolute top-2 right-0">
+              {{treeControl.isExpanded(node) ? "expand_more" : "chevron_right"}}
             </mat-icon>
           </button>
         </mat-tree-node>
       </mat-tree>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="h-full">
+      <div class="h-full" style="background-color: #F3F2EB">
         <div>
           <div class="min-h-16 bg-0-primary flex items-center justify-between text-white">
             <button mat-icon-button (click)="openSideBar()">
                <mat-icon class="leading-[18px] ">menu</mat-icon>
             </button>
-            <div class="mr-6">
-              sdfsdf
-            </div>
+            <app-profile></app-profile>
           </div>
-          <div class="text-sm py-2 pl-4 border-b">
-            sdfsdf > sdf > sdf
-          </div>
+          <app-breadcrumb></app-breadcrumb>
           <div class="p-10">
             <router-outlet></router-outlet>
           </div>

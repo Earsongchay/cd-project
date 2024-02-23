@@ -13,6 +13,9 @@ const routes: Routes = [
   {
     path:'dashboard',
     component:DashboardComponent,
+    data:{
+      breadcrumb:'dashboard'
+    }
   },
   {
     path:'login',
@@ -20,6 +23,9 @@ const routes: Routes = [
   },
   {
     path:'list-artist',
+    data:{
+      breadcrumb:'artist'
+    },
     loadChildren: () =>
       import('./page/artist/artist.module').then((m) => m.ArtistModule),
   }

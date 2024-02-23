@@ -1,9 +1,17 @@
 .nav-item{
-  @apply text-left pl-5 pr-10 w-52 py-2 flex flex-nowrap
+  @apply text-left pl-5 pr-10 w-64 py-2 flex flex-nowrap
 }
 .active{
-  @apply border-2 border-0-primary text-left text-0-primary rounded-[14px] drop-shadow
+  @apply border-2 border-0-primary text-left text-0-primary rounded-r-2xl drop-shadow
 }
 .logo{
-  @apply h-24 w-full flex justify-center items-center drop-shadow-lg
+  @apply h-36 w-full flex justify-center items-center ring ring-0-bg-primary mb-10
 }
+.nav-parent{
+  @apply pl-8
+}
+
+[aria-level="2"] {
+  @apply ml-8 w-56
+}
+

@@ -15,6 +15,12 @@ import {SharedModule} from "./shared/shared.module";
 import { EffectsModule } from '@ngrx/effects';
 import {authReducer} from "./shared/state-manager/auth/auth.reducer";
 import {AuthEffects} from "./shared/state-manager/auth/auth.effect";
+import { BreadcrumbComponent } from './component/breadcrumb/breadcrumb.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import {CdkMenu, CdkMenuItem, CdkMenuTrigger} from "@angular/cdk/menu";
+import {MaterialModule} from "./shared/material/material.module";
+import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +28,15 @@ import {AuthEffects} from "./shared/state-manager/auth/auth.effect";
     ToolbarComponent,
     SidebarComponent,
     FooterComponent,
+    BreadcrumbComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    StoreModule.forRoot({sidebar: openSideBarReducer,Auth:authReducer}),
+    StoreModule.forRoot({sidebar: openSideBarReducer, Auth: authReducer}),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -40,9 +48,13 @@ import {AuthEffects} from "./shared/state-manager/auth/auth.effect";
       },
     }),
     PageModule,
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    MaterialModule,
   ],
-  providers: [],
+  exports: [
+    SharedModule,
+  ],
+  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

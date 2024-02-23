@@ -7,6 +7,9 @@ import { Store } from '@ngrx/store';
 import { openSidebarAction } from 'src/app/shared/state-manager/sidebar/open-sidebar.action';
 import { selectOpenSideBar } from 'src/app/shared/state-manager/sidebar/open-sidebar.selector';
 import { MENU_DATA, MenuNode } from './menu';
+import {ActivatedRouteSnapshot, NavigationEnd, Router} from "@angular/router";
+import {BehaviorSubject} from "rxjs";
+import {BreadcrumbService} from "../../shared/breadcrumb.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -19,7 +22,8 @@ export class SidebarComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
-  constructor(private observer: BreakpointObserver,private store: Store){
+  breadcrumb:any[]
+  constructor(private observer: BreakpointObserver,private store: Store,private breadcrumbService:BreadcrumbService){
     this.dataSource.data = MENU_DATA;
   }
 
