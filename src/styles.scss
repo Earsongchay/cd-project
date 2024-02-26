@@ -46,7 +46,7 @@ $allweb-second: (
     200: #e7afe9,
     300: #da88dd,
     400: #ce60d2,
-    500: #c238c7,
+    500: #c73844,
     600: #9b2d9f,
     700: #742277,
     800: #4e1650,
@@ -175,6 +175,16 @@ table{
 }
 .mat-mdc-dialog-container .mdc-dialog__surface{
   border-radius: 16px!important;
+}
+.mat-mdc-text-field-wrapper{
+  height: 35px!important;
+}
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix, .mat-mdc-form-field-icon-prefix>.mat-icon{
+  padding: 5px 0!important;
+
+}
+.mdc-notched-outline__notch {
+  border-right: none!important;
 }
 h1 {
   padding: 0 1rem;

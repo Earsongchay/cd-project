@@ -21,6 +21,7 @@ import {CdkMenu, CdkMenuItem, CdkMenuTrigger} from "@angular/cdk/menu";
 import {MaterialModule} from "./shared/material/material.module";
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from "@angular/material/dialog";
 import { CardComponent } from './component/card/card.component';
+import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -61,8 +62,10 @@ import { CardComponent } from './component/card/card.component';
         hasBackdrop: true,
         width:'600px',
         disableClose:true,
+        panelClass:'p-4'
       } as MatDialogConfig
     },
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
   bootstrap: [AppComponent]
 })

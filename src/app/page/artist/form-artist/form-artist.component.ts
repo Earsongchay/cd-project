@@ -9,6 +9,7 @@ import {ErrorStateMatcher} from "@angular/material/core";
 })
 export class FormArtistComponent implements OnInit{
   formGroup!: FormGroup;
+  firstname= new FormControl('',[Validators.required])
   matcher = new MyErrorStateMatcher();
   ngOnInit() {
     this.formGroup = new FormGroup({

@@ -1,10 +1,10 @@
-<div>
-  <form [formGroup]="formGroup">
-    <mat-form-field formControlName="firstname" appearance="outline" [errorStateMatcher]="matcher">
-      <input required type="text" matInput placeholder="First name" >
-      <mat-icon matIconPrefix>person</mat-icon>
-      <mat-error *ngIf="formGroup.controls['firstname'].hasError['required']">
-        Email is <strong>required</strong>
+<div class="p-4">
+  <form>
+    <mat-form-field floatLabel="always"  appearance="outline">
+      <mat-label>Firstname</mat-label>
+      <input required type="text" [formControl]="firstname" class="text-xs" matInput placeholder="Ex. Bob" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="firstname.hasError('required')">
+        First name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
   </form>
