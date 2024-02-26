@@ -156,7 +156,26 @@ $cd-theme: mat.define-light-theme((
 html, body { height: 100%;box-sizing: border-box }
 body {margin: 0; font-family:  "Dosis", "Helvetica Neue", sans-serif; background-color: #F6FAFC; font-weight: 500;box-sizing: border-box}
 
+table{
+  border: 1px solid gray;
+  border-radius: 10px!important;
+}
+.mat-mdc-table thead, .mat-mdc-table tbody{
+  background:none !important;
+}
 
+.mdc-data-table__cell, .mdc-data-table__header-cell {
+  height: 12px !important;
+}
+.mat-mdc-row{
+  height: 40px!important;
+}
+.mat-mdc-raised-button{
+  border-radius: 6px !important;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface{
+  border-radius: 16px!important;
+}
 h1 {
   padding: 0 1rem;
 }

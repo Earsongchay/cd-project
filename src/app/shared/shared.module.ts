@@ -13,7 +13,10 @@ import {ComponentModule} from "../component/component.module";
     CommonModule,
     ComponentModule
   ],
-  exports: [MaterialModule,ComponentModule]
-
+  exports:[
+    ComponentModule,
+    HttpClientModule,
+    MaterialModule,
+  ]
 })
 export class SharedModule { }

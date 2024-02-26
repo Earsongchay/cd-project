@@ -1,1 +1,45 @@
-<p>list-artist works!</p>
+<app-card>
+  <div class="grid grid-cols-2 py-4 mx-2">
+    <div class="flex items-end font-sans font-bold text-xl">
+      <div class="w-12 h-12">
+        <img alt="artist" class="w-full h-full" src="assets/950cc0483ae9f4c373295a907ced186a.gif">
+      </div>
+      <div>ARTIST</div>
+    </div>
+    <div class="text-right">
+      <button mat-raised-button color="primary" (click)="openAddDialog()">New Artist</button>
+    </div>
+  </div>
+  <table mat-table aria-describedby="" [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname + element.lastname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="groupName">
+      <th mat-header-cell *matHeaderCellDef> Group </th>
+      <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="totalAlbum">
+      <th mat-header-cell *matHeaderCellDef> Album Release </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalAlbum}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <div class="mt-5">
+    <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+</app-card>

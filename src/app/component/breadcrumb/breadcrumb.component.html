@@ -1,6 +1,11 @@
-<div class="text-sm text-0-primary border-b-0-primary py-2 pl-4 border-b">
-  <span class="breadcrumb" [routerLink]="''">Home ></span>
-  <span [routerLinkActive]="'active-breadcrumb'" [routerLinkActiveOptions]="{exact:true }" [routerLink]="b.url" class="breadcrumb" *ngFor="let b of breadcrumb; let last = last">
-              {{b.label}} <span *ngIf="!last"> > </span>
-            </span>
+<div class="text-sm text-0-primary border-b-0-primary py-2 pl-4 border-b dark:text-0-bg-primary">
+  <span class="breadcrumb" [routerLink]="''">Home</span>
+  <span> ></span>
+  <span [routerLinkActive]="'active-breadcrumb'"
+        [routerLinkActiveOptions]="{exact:true }"
+        [routerLink]="b.url"
+        class="breadcrumb" *ngFor="let b of breadcrumb; let last = last">
+    {{b.label}}
+    <span *ngIf="!last" class="breadcrumb-separator"> > </span>
+  </span>
 </div>

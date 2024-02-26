@@ -19,7 +19,7 @@ import { BreadcrumbComponent } from './component/breadcrumb/breadcrumb.component
 import { ProfileComponent } from './component/profile/profile.component';
 import {CdkMenu, CdkMenuItem, CdkMenuTrigger} from "@angular/cdk/menu";
 import {MaterialModule} from "./shared/material/material.module";
-import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from "@angular/material/dialog";
 import { CardComponent } from './component/card/card.component';
 
 @NgModule({
@@ -54,7 +54,16 @@ import { CardComponent } from './component/card/card.component';
   exports: [
     SharedModule,
   ],
-  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {
+        hasBackdrop: true,
+        width:'600px',
+        disableClose:true,
+      } as MatDialogConfig
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

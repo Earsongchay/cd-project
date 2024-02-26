@@ -1,9 +1,15 @@
-<div class="mr-8 flex flex-row items-center cursor-pointer" [matMenuTriggerFor]="menu">
-  <div class="h-8 w-8 mr-4 rounded-full ring ring-0-bg-primary">
-    <img src="assets/137280035_3559257957497348_1494012786861889471_n.jpg" alt="" class="w-full h-full rounded-full">
+<div class="flex">
+  <button class="mr-6 mt-2" [matTooltip]="darkIcon" (click)="toggleDark()">
+    <mat-icon>{{darkIcon === 'dark' ? 'dark_mode' : 'sunny'}}</mat-icon>
+  </button>
+  <div class="mr-8 flex flex-row items-center cursor-pointer" [matMenuTriggerFor]="menu">
+    <div class="h-8 w-8 mr-4 rounded-full ring ring-0-bg-primary">
+      <img src="assets/137280035_3559257957497348_1494012786861889471_n.jpg" alt="" class="w-full h-full rounded-full">
+    </div>
+    <div class="name">{{"Lim vittra" | uppercase}}</div>
   </div>
-  <div class="name">{{"Lim vittra" | uppercase}}</div>
 </div>
+
 
 <mat-menu #menu="matMenu" class="mt-4 rounded-full">
   <button class="btn"><mat-icon class="text-xs pt-1">person</mat-icon>Profile</button>

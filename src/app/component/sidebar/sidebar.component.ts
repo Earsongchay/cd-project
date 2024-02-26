@@ -22,7 +22,6 @@ export class SidebarComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
-  breadcrumb:any[]
   constructor(private observer: BreakpointObserver,private store: Store,private breadcrumbService:BreadcrumbService){
     this.dataSource.data = MENU_DATA;
   }
