@@ -46,18 +46,16 @@
       </mat-tree>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="h-full bg-0-bg-primary relative dark:bg-0-bg-primary-dark">
-        <div>
-          <div class="min-h-16 bg-0-primary flex items-center justify-between text-white">
-            <button mat-icon-button (click)="openSideBar()">
-               <mat-icon class="leading-[18px] ">menu</mat-icon>
-            </button>
-            <app-profile></app-profile>
-          </div>
-          <app-breadcrumb></app-breadcrumb>
-          <div class="p-10">
-            <router-outlet></router-outlet>
-          </div>
+      <div class="bg-0-bg-primary relative dark:bg-0-bg-primary-dark">
+        <div class="min-h-16 bg-0-primary flex items-center justify-between text-white">
+          <button mat-icon-button (click)="openSideBar()">
+             <mat-icon class="leading-[18px] ">menu</mat-icon>
+          </button>
+          <app-profile></app-profile>
+        </div>
+        <app-breadcrumb></app-breadcrumb>
+        <div class="p-10 pb-16" [style.min-height.px]="height - 101">
+          <router-outlet></router-outlet>
         </div>
         <app-footer class="absolute bottom-0"></app-footer>
       </div>

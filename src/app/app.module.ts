@@ -22,6 +22,8 @@ import {MaterialModule} from "./shared/material/material.module";
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from "@angular/material/dialog";
 import { CardComponent } from './component/card/card.component';
 import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material/core";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {MAT_PAGINATOR_DEFAULT_OPTIONS} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material
     PageModule,
     EffectsModule.forRoot([]),
     MaterialModule,
+    NgxSpinnerModule.forRoot()
   ],
   exports: [
     SharedModule,

@@ -1,13 +1,37 @@
 <div class="p-4">
-  <form>
-    <mat-form-field floatLabel="always"  appearance="outline">
-      <mat-label>Firstname</mat-label>
-      <input required type="text" [formControl]="firstname" class="text-xs" matInput placeholder="Ex. Bob" [errorStateMatcher]="matcher">
-      <mat-error *ngIf="firstname.hasError('required')">
-        First name is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-  </form>
+  <h1 mat-dialog-title>Artist Information</h1>
+  <mat-dialog-content class="p-4">
+    <div class="artist-wrapper" [formGroup]="formGroup">
+      <div >
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Firstname</mat-label>
+          <input required type="text" class="text-xs" formControlName="firstname" matInput placeholder="Firstname">
+          <mat-error *ngIf="formGroup.controls['firstname'].hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Lastname</mat-label>
+          <input required type="text" class="text-xs" formControlName="lastname" matInput placeholder="Lastname" >
+          <mat-error *ngIf="formGroup.controls['lastname'].hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-span-2">
+        <mat-form-field floatLabel="always"  appearance="outline">
+          <mat-label>Group</mat-label>
+          <input type="text" class="text-xs" formControlName="groupName" matInput placeholder="Artist's Group" >
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button color="primary" mat-raised-button (click)="addNewArtist()">Add new artist</button>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
 </div>
 
 

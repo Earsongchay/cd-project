@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal, WritableSignal} from '@angular/core';
 import {HttpService} from "../../../shared/http/http.service";
 import {PaginateRequest, PaginateResponse} from "../../../shared/Model/PaginateRequest";
 import {buildParam} from "../../../shared/function/build-param";
@@ -7,21 +7,23 @@ import {buildParam} from "../../../shared/function/build-param";
   providedIn: 'root'
 })
 export class ArtistService {
-
   constructor(private http:HttpService) { }
 
   getList(body:PaginateRequest){
     const params = new URLSearchParams(buildParam({...body}))
     return this.http.get<ArtistPaginateResponse>(`/artist?${params}`)
   }
+
+  addArtist(body:ArtistCreateRequest){
+    return this.http.post<Artist,ArtistCreateRequest>(`/artist`,body)
+  }
 }
 
-export interface ArtistPaginateResponse extends PaginateResponse<Artist>{
-  id: number;
-  firstname: string;
-  lastname: string;
-  groupName: string;
-  albums: Album[];
+export interface ArtistPaginateResponse extends PaginateResponse<Artist>{}
+export interface ArtistCreateRequest {
+  firstname:string,
+  lastname:string,
+  groupName?:string
 }
 
 interface Genre {

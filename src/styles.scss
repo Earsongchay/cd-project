@@ -186,6 +186,12 @@ table{
 .mdc-notched-outline__notch {
   border-right: none!important;
 }
+mat-form-field{
+  @apply w-full
+}
+.mat-mdc-form-field-error-wrapper{
+  padding: 0!important;
+}
 h1 {
   padding: 0 1rem;
 }

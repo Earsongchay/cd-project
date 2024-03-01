@@ -1,28 +1,105 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import * as echarts from 'echarts';
+import {EChartsOption} from 'echarts';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements AfterViewInit{
 
-  constructor(private http:HttpClient) {
+  @ViewChild('pieChartFile') pieChartFile!:ElementRef
+  @ViewChild('nightIngale') nightIngale!:ElementRef
 
-  }
-
-  ngOnInit() {
-    this.http.get('/api/isin',{
-      headers:{
-        Authorization: "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI4IiwibmJmIjoxNzA4NDk1Mjk1LCJleHAiOjE3MDg1ODE2OTUsImlhdCI6MTcwODQ5NTI5NSwiaXNzIjoiRkFQQSIsInJvbGUiOiJBRE1JTiIsInBlcm1pc3Npb24iOjYzfQ.Np5my5HuYtS9M8ElP1i9jM0VUADIRCx5XrLPvBLyJZIq-fR6rlBnaBSfot4YszbCjTqq57uu5myiUlt7ECfmX1Au_-hAOsIVQc801-XdRnbAp2T9aeOCtVAVHfEXbl4c3qSRwJRMdW6TfbnerJvwdIJ798nNb8eDGA8xkeKw2MUiWmnUG5T1" +
-          "CoW1GnEqC8Y3LjAgJ19jRq2qf_8WCP68xW9BHjW6QDrjGaWgrL14YagYb4cPNzMP0v0-1_XD-" +
-          "V3KaR48JCgIGa1RUQ9JBHJ6Oc8QP4LAifQs618dDAE7LE8sKGBjB_bQc_ozQI3YpY8WV-_PtGlADkxv8iOo5F5MBQ"
-      }
-    }).subscribe(data=>{
-      console.log(data)
-    },error => {
-      console.log(error)
+  ngAfterViewInit() {
+    echarts.init(this.pieChartFile.nativeElement,null,{
+      renderer:"svg",
+      height:"400px"
     })
+      .setOption({
+        tooltip: {
+          trigger: 'item'
+        },
+        legend: {
+          top: '5%',
+          left: 'center'
+        },
+        series: [
+          {
+            name: 'Mon',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+              borderRadius: 10,
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            label: {
+              show: false,
+              position: 'center'
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: 20,
+                fontWeight: 'bold'
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            data: [
+              { value: 1048, name: 'Search Engine' },
+              { value: 735, name: 'Direct' },
+              { value: 580, name: 'Email' },
+              { value: 484, name: 'Union Ads' },
+              { value: 300, name: 'Video Ads' }
+            ]
+          }
+        ]
+      })
+
+    echarts.init(this.nightIngale.nativeElement,null,{
+      renderer:"svg",
+      height:"700px"
+    })
+      .setOption( {
+        legend: {
+          align:'right',
+          top: 'bottom'
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            mark: { show: true },
+            // dataView: { show: true, readOnly: false },
+            // restore: { show: true },
+            // saveAsImage: { show: true }
+          }
+        },
+        series: [
+          {
+            name: 'Nightingale Chart',
+            type: 'pie',
+            radius: [50, 250],
+            center: ['50%', '50%'],
+            roseType: 'area',
+            itemStyle: {
+              borderRadius: 8
+            },
+            data: [
+              { value: 40, name: 'rose 1' },
+              { value: 38, name: 'rose 2' },
+              { value: 32, name: 'rose 3' },
+              { value: 30, name: 'rose 4' },
+              { value: 28, name: 'rose 5' },
+              { value: 26, name: 'rose 6' },
+              { value: 22, name: 'rose 7' },
+              { value: 18, name: 'rose 8' }
+            ]
+          }
+        ]
+      } as EChartsOption)
   }
 }

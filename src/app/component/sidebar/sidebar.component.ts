@@ -22,6 +22,8 @@ export class SidebarComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
+
+  height = window.innerHeight
   constructor(private observer: BreakpointObserver,private store: Store,private breadcrumbService:BreadcrumbService){
     this.dataSource.data = MENU_DATA;
   }
@@ -71,6 +73,8 @@ export class SidebarComponent implements OnInit{
     this.isOpen = !this.isOpen
     this.store.dispatch(openSidebarAction({isOpen : this.isOpen}))
   }
+
+  protected readonly history = history;
 }
 
 export interface SideMenuNode {
