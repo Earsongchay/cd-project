@@ -6,6 +6,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@460&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import "@flaticon/flaticon-uicons/css/all/all.css";
+@import "@flaticon/flaticon-uicons/css/all/all.rounded.css";
+@import "@flaticon/flaticon-uicons/css/all/all.straight.css";
+@import "@flaticon/flaticon-uicons/css/brands/all.css";
+
 
 $allweb-primary: (
   50 : #e6e7e7,
@@ -214,4 +219,7 @@ mat-sidenav-container {
 
 ::-webkit-scrollbar-thumb {
   @apply bg-0-primary rounded-2xl
+}
+.mdc-text-field,.mat-mdc-form-field{
+  border-radius: 50px !important;
 }

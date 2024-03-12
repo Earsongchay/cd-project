@@ -1,13 +1,16 @@
 <app-card>
   <div class="grid grid-cols-2 py-4 mx-2">
     <div class="flex items-end font-sans font-bold text-xl">
-      <div class="w-12 h-12">
-        <img alt="artist" class="w-full h-full" src="assets/950cc0483ae9f4c373295a907ced186a.gif">
+      <div class="w-16 h-12">
+        <img alt="artist" class="w-full h-full" src="assets/unnamed.gif">
       </div>
       <div>ARTIST</div>
     </div>
     <div class="text-right">
-      <button mat-raised-button color="primary" (click)="openAddDialog()">New Artist</button>
+      <button mat-stroked-button color="primary" class="border-2 rounded-xl text-0-primary border-0-primary" (click)="openAddDialog()">
+        <i class="text-xs fi fi-rr-square-plus"></i>
+        New Artist
+      </button>
     </div>
   </div>
   <table mat-table aria-describedby="" [dataSource]="dataSource" class="mat-elevation-z8">
@@ -19,8 +22,8 @@
 
 
     <ng-container matColumnDef="firstname">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.firstname + element.lastname}} </td>
+      <th mat-header-cell *matHeaderCellDef> Artist's Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname + ' ' + element.lastname}} </td>
     </ng-container>
 
     <ng-container matColumnDef="groupName">
@@ -33,6 +36,16 @@
       <th mat-header-cell *matHeaderCellDef> Album Release </th>
       <td mat-cell *matCellDef="let element"> {{element.totalAlbum}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef class="w-24"></th>
+      <td mat-cell *matCellDef="let element" class="w-24">
+        <i (click)="modifyData(element)" class="text-lg hover:cursor-pointer fi fi-rr-pen-square"></i>
+        <i class="ml-2 text-red-400 text-lg hover:cursor-pointer fi fi-rr-trash-xmark"></i>
+      </td>
+    </ng-container>
+
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
@@ -42,7 +55,7 @@
       [pageSize]="paginateRequest().size"
       [pageIndex]="paginateRequest().page"
       [length]="total()"
-      [pageSizeOptions]="[5 , 15, 30]" aria-label="Select page">
+      [pageSizeOptions]="[5 , 15, 30, 50]" aria-label="Select page">
     </mat-paginator>
   </div>
 

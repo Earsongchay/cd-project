@@ -17,11 +17,11 @@ export interface MenuNode {
       link: '/list-artist/list',
 
     },
-    // {
-    //   name: 'Album',
-    //   icon: 'multitrack_audio',
-    //   link: '/list-artist/create',
-    // },
+    {
+      name: 'Album',
+      icon: 'multitrack_audio',
+      link: '/list-album/list',
+    },
     // {
     //   name: 'Track',
     //   icon: 'audiotrack',

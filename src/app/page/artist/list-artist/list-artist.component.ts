@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, effect, signal, ViewChild, WritableSignal} from '@angular/core';
-import {ArtistService} from "../service/artist.service";
+import {Artist, ArtistService} from "../service/artist.service";
 import {PaginateRequest} from "../../../shared/Model/PaginateRequest";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
@@ -14,7 +14,7 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 
 export class ListArtistComponent implements AfterViewInit{
-  displayedColumns = ['id','firstname','groupName','totalAlbum'];
+  displayedColumns = ['id','firstname','groupName','totalAlbum','action'];
   dataSource: any;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator
@@ -22,7 +22,7 @@ export class ListArtistComponent implements AfterViewInit{
   total = signal(0)
   paginateRequest:WritableSignal<PaginateRequest> = signal({
     page: 0,
-    size: 5,
+    size: 15,
   })
 
   constructor(private artistService:ArtistService,private dialog:MatDialog,private spinner:NgxSpinnerService) {
@@ -59,8 +59,20 @@ export class ListArtistComponent implements AfterViewInit{
 
   openAddDialog(){
     this.dialog.open(FormArtistComponent,{
-      disableClose:true,
       width:'600px',
+    }).afterClosed().subscribe(
+      data =>{
+        if (data){
+          this.fetchArtist()
+        }
+      }
+    )
+  }
+
+  modifyData(element:Artist) {
+    this.dialog.open(FormArtistComponent,{
+      data:element,
+      width:'600px'
     }).afterClosed().subscribe(
       data =>{
         if (data){

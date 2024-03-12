@@ -8,17 +8,5 @@ import {AuthService} from "../../auth/auth.service";
 
 @Injectable()
 export class AuthEffects {
-  login$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(login),
-      switchMap(({ username, password }) =>
-        this.authService.login({username, password}).pipe(
-          map(user => loginSuccess({ user })),
-          catchError(error => of(loginFailure({ error })))
-        )
-      )
-    )
-  );
-
   constructor(private actions$: Actions, private authService: AuthService) {}
 }

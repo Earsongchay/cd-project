@@ -28,6 +28,14 @@ const routes: Routes = [
     },
     loadChildren: () =>
       import('./page/artist/artist.module').then((m) => m.ArtistModule),
+  },
+  {
+    path:'list-album',
+    data:{
+      breadcrumb:'album'
+    },
+    loadChildren: () =>
+      import('./page/album/album.module').then((m) => m.ArtistModule),
   }
 ];
 

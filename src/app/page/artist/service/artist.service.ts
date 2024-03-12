@@ -17,6 +17,10 @@ export class ArtistService {
   addArtist(body:ArtistCreateRequest){
     return this.http.post<Artist,ArtistCreateRequest>(`/artist`,body)
   }
+
+  updateArtist(id:number,body:ArtistCreateRequest){
+    return this.http.patch<Artist,ArtistCreateRequest>(`/artist/${id}`,body)
+  }
 }
 
 export interface ArtistPaginateResponse extends PaginateResponse<Artist>{}
@@ -33,7 +37,7 @@ interface Genre {
   genreName: string;
 }
 
-interface Artist {
+export interface Artist {
   id: number;
   createdAt: string;
   lastModifiedAt: string;

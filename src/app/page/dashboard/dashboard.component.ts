@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import * as echarts from 'echarts';
 import {EChartsOption} from 'echarts';
+import {AuthService} from "../../shared/auth/auth.service";
+import {data} from "autoprefixer";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,7 +12,8 @@ export class DashboardComponent implements AfterViewInit{
 
   @ViewChild('pieChartFile') pieChartFile!:ElementRef
   @ViewChild('nightIngale') nightIngale!:ElementRef
-
+constructor(private auth:AuthService) {
+}
   ngAfterViewInit() {
     echarts.init(this.pieChartFile.nativeElement,null,{
       renderer:"svg",

@@ -29,7 +29,8 @@
     </div>
   </mat-dialog-content>
   <div mat-dialog-actions>
-    <button color="primary" mat-raised-button (click)="addNewArtist()">Add new artist</button>
+    <button *ngIf="!data" [disabled]="formGroup.invalid" color="primary" mat-raised-button (click)="addNewArtist()">Add new artist</button>
+    <button *ngIf="data" [disabled]="formGroup.invalid" color="primary" mat-raised-button (click)="modifyArtist()">Modify</button>
     <button mat-button mat-dialog-close>Close</button>
   </div>
 </div>
