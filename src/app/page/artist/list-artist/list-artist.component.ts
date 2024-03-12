@@ -14,7 +14,7 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 
 export class ListArtistComponent implements AfterViewInit{
-  displayedColumns = ['id','firstname','groupName','totalAlbum','action'];
+  displayedColumns = ['id','firstName','groupName','totalAlbum','action'];
   dataSource: any;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator
@@ -47,7 +47,8 @@ export class ListArtistComponent implements AfterViewInit{
   fetchArtist(){
     this.artistService.getList(this.paginateRequest()).subscribe({
       next:data => {
-        this.dataSource = new MatTableDataSource(data.content.map(r => ({...r,totalAlbum: r.albums.length})))
+        console.log(data)
+        this.dataSource = new MatTableDataSource(data.content)
         this.spinner.hide('loading')
         this.total.set(data.total)
       },

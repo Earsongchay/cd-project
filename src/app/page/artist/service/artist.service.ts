@@ -27,7 +27,14 @@ export interface ArtistPaginateResponse extends PaginateResponse<Artist>{}
 export interface ArtistCreateRequest {
   firstname:string,
   lastname:string,
-  groupName?:string
+  akaName?:string,
+  socialMedia:string,
+  description:string,
+  dateOfBirth:Date |string,
+  id:number,
+  fileName:string,
+  createdAt: string | Date;
+  lastModifiedAt: string | Date;
 }
 
 interface Genre {
@@ -37,14 +44,8 @@ interface Genre {
   genreName: string;
 }
 
-export interface Artist {
-  id: number;
-  createdAt: string;
-  lastModifiedAt: string;
-  firstname: string;
-  lastname: string;
-  groupName: string;
-  albums: string[];
+export interface Artist extends ArtistCreateRequest{
+  albums: AlumTrackDto[];
 }
 
 interface Track {
@@ -57,6 +58,25 @@ interface Track {
   artist: Artist;
   album: string;
 }
+
+export interface AlumTrackDto {
+  inStock: boolean,
+  stockQuantity: number,
+  albumTitle: string,
+  albumDuration: number,
+  tracksQuantity: number,
+  tracks: TrackDto[]
+}
+
+export interface TrackDto{
+  id: number;
+  trackTitle: string;
+  duration: string;
+  genre?: Genre;
+  lyrics:string;
+  releaseDate: string | Date
+}
+
 
 interface Album {
   id: number;
