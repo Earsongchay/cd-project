@@ -223,3 +223,17 @@ mat-sidenav-container {
 .mdc-text-field,.mat-mdc-form-field{
   border-radius: 50px !important;
 }
+.mat-mdc-form-field-infix {
+  @apply min-h-0
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  @apply py-1
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base, .mat-mdc-icon-button {
+  @apply p-0 h-6 w-6 m-1
+}
+mat-error{
+  font-size: 10px!important;
+}

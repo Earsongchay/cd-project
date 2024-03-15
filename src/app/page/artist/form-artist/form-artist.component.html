@@ -1,32 +1,67 @@
 <div class="p-4">
   <h1 mat-dialog-title>Artist Information</h1>
-  <mat-dialog-content class="p-4">
+  <mat-dialog-content class="p-2">
+
     <div class="artist-wrapper" [formGroup]="formGroup">
+
+      <div class="col-span-2">
+        <app-choose-profile (imageChange)="uploadImage($event)" [name]="image"></app-choose-profile>
+      </div>
+
       <div >
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>Firstname</mat-label>
-          <input required type="text" class="text-xs" formControlName="firstname" matInput placeholder="Firstname">
-          <mat-error *ngIf="formGroup.controls['firstname'].hasError('required')">
+          <input required type="text" class="text-xs" formControlName="firstName" matInput placeholder="Firstname">
+          <mat-error *ngIf="formGroup.controls['firstName'].hasError('required')">
             First name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
+
       <div>
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>Lastname</mat-label>
-          <input required type="text" class="text-xs" formControlName="lastname" matInput placeholder="Lastname" >
-          <mat-error *ngIf="formGroup.controls['lastname'].hasError('required')">
+          <input required type="text" class="text-xs" formControlName="lastName" matInput placeholder="Lastname" >
+          <mat-error *ngIf="formGroup.controls['lastName'].hasError('required')">
             Last name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
+
       <div class="col-span-2">
-        <mat-form-field floatLabel="always"  appearance="outline">
-          <mat-label>Group</mat-label>
-          <input type="text" class="text-xs" formControlName="groupName" matInput placeholder="Artist's Group" >
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>As know as</mat-label>
+          <input required type="text" class="text-xs" formControlName="akaName" matInput placeholder="AKA" >
+          <mat-error *ngIf="formGroup.controls['akaName'].hasError('required')">
+            Nickname is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Birthday</mat-label>
+          <input class="text-xs" matInput formControlName="dateOfBirth" [matDatepicker]="picker">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Social Media</mat-label>
+          <input class="text-xs" matInput formControlName="socialMedia" placeholder="Ex. @devid">
+        </mat-form-field>
+      </div>
+
+      <div class="col-span-2">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Description</mat-label>
+          <input type="text" class="text-xs" formControlName="description" matInput placeholder="..." >
         </mat-form-field>
       </div>
     </div>
+
   </mat-dialog-content>
   <div mat-dialog-actions>
     <button *ngIf="!data" [disabled]="formGroup.invalid" color="primary" mat-raised-button (click)="addNewArtist()">Add new artist</button>

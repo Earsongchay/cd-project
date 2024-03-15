@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment.development";
 
@@ -21,6 +21,13 @@ export class HttpService {
   }
   post<T, U>(path: string, body: U): Observable<T> {
     return this.http.post<T>(`${environment.HOST_URL}${path}`, body)
+  }
+
+  postImage<U>(path: string, body: U): Observable<string> {
+    return this.http.post(`${environment.HOST_URL}${path}`, body,{
+      observe:'body',
+      responseType:'text'
+    })
   }
 
   postFullPath<T, U>(path: string, body: U): Observable<T> {

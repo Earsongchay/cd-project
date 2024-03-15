@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageRoutingModule } from './page-routing.module';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { WelcomeComponent } from './welcome/welcome.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -19,7 +18,6 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   imports: [
     CommonModule,
-    PageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
     NgxEchartsModule.forRoot({

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, effect, signal, ViewChild, WritableSignal} from '@angular/core';
 import {Artist, ArtistService} from "../service/artist.service";
 import {PaginateRequest} from "../../../shared/Model/PaginateRequest";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatTableDataSource, MatTableDataSourcePaginator} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {FormArtistComponent} from "../form-artist/form-artist.component";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -14,8 +14,8 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 
 export class ListArtistComponent implements AfterViewInit{
-  displayedColumns = ['id','firstName','groupName','totalAlbum','action'];
-  dataSource: any;
+  displayedColumns = ['photo','id','name','aka','social','dob','description','action'];
+  dataSource!: MatTableDataSource<Artist, MatTableDataSourcePaginator>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator
 
@@ -26,7 +26,6 @@ export class ListArtistComponent implements AfterViewInit{
   })
 
   constructor(private artistService:ArtistService,private dialog:MatDialog,private spinner:NgxSpinnerService) {
-    this.spinner.show('loading')
     effect(() =>{
       this.fetchArtist()
     })
@@ -45,14 +44,15 @@ export class ListArtistComponent implements AfterViewInit{
   }
 
   fetchArtist(){
+    this.spinner.show('loading')
     this.artistService.getList(this.paginateRequest()).subscribe({
       next:data => {
-        console.log(data)
         this.dataSource = new MatTableDataSource(data.content)
         this.spinner.hide('loading')
         this.total.set(data.total)
       },
       error : (e)=>{
+        this.spinner.hide('loading')
         console.log(e)
       }
     })

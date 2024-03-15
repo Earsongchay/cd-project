@@ -1,0 +1,11 @@
+<div class="p-4 flex items-center justify-center mb-2">
+  <div class="w-28 h-28 border-2 cursor-pointer rounded-full border-0-primary relative" (click)="choose.click()">
+    <div class="w-full h-full rounded-full">
+      <img [ngSrc]="imageName() !== ''? basePath+imageName():'assets/boy.png'" alt="" class="rounded-full p-1" fill="">
+      <input type="file" #choose class="hidden" (change)="uploadImage($event)">
+    </div>
+    <div class="cursor-pointer absolute bottom-0 right-2 w-6 h-6 p-1 border bg-white rounded-md">
+      <img src="assets/photo-camera.png">
+    </div>
+  </div>
+</div>

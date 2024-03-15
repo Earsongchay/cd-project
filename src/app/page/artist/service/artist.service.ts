@@ -21,12 +21,21 @@ export class ArtistService {
   updateArtist(id:number,body:ArtistCreateRequest){
     return this.http.patch<Artist,ArtistCreateRequest>(`/artist/${id}`,body)
   }
+
+  uploadImage(img:any){
+    const formData = new FormData();
+    formData.append('image', img);
+    return this.http.postImage('/image',formData)
+  }
+  getImage(name:string){
+    return this.http.get<any>(`/artist/${name}`)
+  }
 }
 
 export interface ArtistPaginateResponse extends PaginateResponse<Artist>{}
 export interface ArtistCreateRequest {
-  firstname:string,
-  lastname:string,
+  firstName:string,
+  lastName:string,
   akaName?:string,
   socialMedia:string,
   description:string,
